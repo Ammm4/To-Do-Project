@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="main.css">
+  <link rel="icon" href="../images/logo.png" type="image/gif" sizes="16x16">
+  <title>ToDo App</title>
+</head>
+<body>
+  
+    <header>
+      
+         <div class="logo" style="background-color: dodgerblue;">
+           <img src="./images/logo.png" alt="app Logo">
+         </div> 
+        <div class="header">
+          <img src="./images/avatar2.png" alt="Avatar" class="img1">John
+          
+            <i class="fa fa-bell" aria-hidden="true"></i>
+            <i class="fa fa-caret-down "></i>  
+        </div>
+         
+    </header>
+  
+ <main>
+  <nav>
+     <div class="header">
+        <img src="./images/avatar2.png" alt="Avatar" class="img1"> John 
+     </div>
+      
+        
+        <div id="upcoming" onclick="showAllTodo()"><i class="fa fa-list"></i> Upcoming <span class='totalItem'></span></div>
+        <div id="totalTask"><i class="fa fa-shopping-basket"></i> Grocery</div>
+        <div id="movie"><i class="fa fa-film"></i> Movies To See</div>
+        <div id="contact"><i class="fa fa-address-book"></i> Contacts</div>
+        <div id="events"><i class="fa fa-calendar"></i> Events</div>
+        <div id="birthday"><i class="fa fa-birthday-cake" aria-hidden="true"></i> Birthdays</div>
+        <div id="recent"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Recently Added</div>
+        <div id="recipe"><i class="fa fa-cutlery" aria-hidden="true"></i> Recipes</div>
+        <div id="health"><i class="fa fa-heartbeat" aria-hidden="true"></i> Health</div>
+        <div id="trash"><i class="fa fa-trash"></i> Trash</div>
+      
+      
+      <div class="addTask"><button onclick="showForm()"> + Add a New ToDo</button></div>
+  </nav>
+
+<section> </section>
+
+<div id='dateEntry'>
+   <div class="clearfix"><i class="fa fa-close fa-2x" style="float: right" onclick="cancel()"></i><h3>Add a Date</h3></div>
+   <form onsubmit="addDate()">
+     <label for="date">Date:</label><br>
+     <input type="date" id='date' name='date' required><br><br>
+     <input type="submit" value='Select'>
+   </form>
+
+</div>
+   
+<div class="taskEntry"></div>
+<div class="addTask1">
+  <button onclick="showForm(true)">+ ADD NEW </button>
+</div>  
+<div id='cover'></div> 
+</main>
+  
+
+<script src="main.js"></script>
+</body>
+</html>
