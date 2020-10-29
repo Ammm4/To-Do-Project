@@ -1,0 +1,268 @@
+html {
+  background-color: dodgerblue;
+}
+* {
+  box-sizing: border-box;
+  background-color: white;
+  color: black;
+}
+/* For elements dodgerblue Back-colour*/
+header, .logo img , .fa-close, .clearfix{
+  background-color: dodgerblue;
+}
+body, h2{
+  margin-top: 0px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+/* overflow-auto */
+#cover, ul, .clearfix, .content {
+  overflow: auto;
+} 
+/* CSS for Page Header*/
+header {
+  margin:0px 0px 9px 0px;
+  padding: 2px 0px 0px 0px;  
+}
+.line-through {
+  text-decoration: line-through;
+  text-decoration-color: black;
+  color: grey;
+}
+.no-line {
+  text-decoration: none;
+  color: black;
+}
+/* Elements with with 100% width */
+button, li, #cover, #totalTask,.content, .header, #recent, #upcoming, #movie, #contact, #events, #birthday, #trash, #recipe, #health{
+  width: 100%;
+} 
+/*inline-blocks*/
+.header, span, p {
+  display: inline-block;
+}
+/*display-none && pos-fixed*/
+#cover, #dateEntry, .addTask1, .taskEntry {
+ display: none;
+ position: fixed;
+}
+/*pos-absolute*/
+.add-item, #dateEntry, section, .taskEntry {
+  position: absolute;
+}
+/*txt-al: center*/
+span, #dateEntry{
+text-align: center;
+}
+/*margin: auto*/
+button, input{
+  height: 45px; 
+  border: 2px solid grey;
+} 
+/*font-size: 16px*/
+.header,  p, .fa-circle-thin, .fa-check-circle {
+  font-size: 16px;
+}
+/*height: 45px*/
+.logo img, .header img, input, .clearfix h3, #totalTask, #recent, #upcoming, #movie, #contact, #events, #birthday, #trash, #recipe, #health {
+  height: 45px;
+}
+ 
+/* .header classes */
+.header {
+  border-radius: 0px;
+  padding: 0 25px;
+  line-height: 45px;
+  border-bottom: 2px solid grey;
+}
+nav .header, header .header {
+  border-radius: 25px;
+  width: 160px;
+  border-bottom: none;
+}
+
+/*images */
+.logo img, .header img{
+  width: 45px;
+  border-radius: 50%;
+}
+.header img{
+  float: left;
+  margin: 0 10px 0 -25px;
+}
+nav, button, #dateEntry, input, section, .taskEntry, li, .fa-pencil, .fa-trash-o{
+  padding: 6px;
+}
+nav, button, #dateEntry, input, section, .taskEntry {
+  border-radius: 6px;
+}
+nav{
+  position: fixed;
+  left:0.5vw;
+  width: 21.5vw;
+}
+
+.add-item {
+  bottom: 5px;
+}
+
+/* Modal Background */
+#cover {
+  background-color: rgba(0,0,0,0.4);
+  top:0;
+  left: 0;
+  z-index: 1;
+  height: 100%;
+}
+/*NAV Elements*/
+#totalTask, #recent, #upcoming, #movie, #contact, #events, #birthday, #trash, #recipe, #health{
+  margin-top: 6px;
+  padding: 6px 0px 0px 2px; 
+}
+/* Task and Date Input */
+#dateEntry {
+ z-index: 111;
+ top: 25%;
+ left: 25%;
+ width: 50vw;
+ height: 35vh;
+}
+input {
+  width: 228px;
+}
+.addTask1 { 
+  width: 77vw;
+  margin: auto;
+  bottom: 5vh;
+  left: 12.5vw;
+  z-index: 111;
+}
+
+/* CSS for SECTION and its children */
+section, .taskEntry {
+  margin: 0;
+  left: 22.5vw;
+  padding:0px 5px 5px 5px;
+  width: 77vw;
+}
+.taskEntry {
+  z-index: 222;
+  top: 10%;
+  left: 12.5%;  
+ }
+
+.content {
+  position: relative;
+  height: 65vh;
+  padding: 0px 5px 5px 5px;
+}
+/*CSS for creating upcoming taskList  */ 
+ul {
+  margin: 0;
+  padding-left: 0px;
+  height: 57vh;
+  font-family: cursive;
+}
+li {
+  list-style-type:none;
+  border-bottom: 1px solid grey;
+  text-align:left;
+}
+.fa-pencil, .fa-trash-o, .fa-plus-circle, .fa-plus {
+  color: dodgerblue;
+}
+.fa-plus-circle {
+    font-size: 45px;
+    position: relative;
+    top:5px;
+}
+.fa-pencil, .fa-trash-o {
+  font-size: 25px;
+  min-width: 35px;
+}
+.actions {
+  float: right;
+}
+
+.fa-check-circle {
+  color: green;
+}
+
+/* Customising scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+ /*CSS for upcomingList*/
+ #cover .taskEntry {
+  clear: right;
+  display: block;
+  position: static;
+  margin: 5px auto; 
+}
+/*Flex with flex items*/
+ .taskEntry .header1, header, .header .header1, .actions {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+ }
+/*UPCOMING-TODOS, DATE-ENTRY, ADD-TASKS' HEADER*/
+.clearfix, .clearfix h3{
+  margin-bottom: 20px;
+}
+.clearfix h3 {
+  width: 300px;
+  border-radius: 25px;
+  margin: auto;
+}
+/*UPCOMING TOTAL NUMBER*/
+span {
+  padding: 3px;
+  min-width: 30px;
+  height: 25px;
+  background-color:grey;
+  border-radius: 10px;
+  line-height: normal;
+}
+
+/* HOVER */
+button:hover, input[type=submit]:hover  {
+  background-color:dodgerblue;
+  color:white;
+}
+.fa-pencil:hover{
+  background-color: green;
+  color:black;
+}
+.fa-trash-o:hover{
+  background-color: red;
+  color:black;
+}
+.fa-close:hover {
+  color:red;
+}
+.fa-refresh:hover {
+  color: dodgerblue;
+}
+.emptyDiv {
+  width: 80%;
+  padding-top: 10%;
+  height: 100%;
+  margin: auto;
+  text-align: center;
+  font-size: 35px;
+}
