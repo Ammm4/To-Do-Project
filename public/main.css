@@ -53,11 +53,16 @@ button, li, #cover, #totalTask,.content, .header, #recent, #upcoming, #movie, #c
 span, #dateEntry{
 text-align: center;
 }
+.text button{
+  width:100px;
+}
+
 /*margin: auto*/
 button, input{
   height: 45px; 
   border: 2px solid grey;
 } 
+
 /*font-size: 16px*/
 .header,  p, .fa-circle-thin, .fa-check-circle {
   font-size: 16px;
