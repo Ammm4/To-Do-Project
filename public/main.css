@@ -20,6 +20,11 @@ body, h2{
 } 
 /* CSS for Page Header*/
 header {
+  /* position: fixed;
+  top:0px;
+  left:0px;
+  height: auto;
+  width: 100%; */
   margin:0px 0px 9px 0px;
   padding: 2px 0px 0px 0px;  
 }
@@ -46,7 +51,7 @@ button, li, #cover, #totalTask,.content, .header, #recent, #upcoming, #movie, #c
  position: fixed;
 }
 /*pos-absolute*/
-.add-item, #dateEntry, section, .taskEntry {
+.add-item, #dateEntry, .taskEntry {
   position: absolute;
 }
 /*txt-al: center*/
@@ -100,8 +105,10 @@ nav, button, #dateEntry, input, section, .taskEntry, li, .fa-pencil, .fa-trash-o
 nav, button, #dateEntry, input, section, .taskEntry {
   border-radius: 6px;
 }
-nav{
+nav , section{
   position: fixed;
+}
+nav {
   left:0.5vw;
   width: 21.5vw;
 }
