@@ -42,10 +42,18 @@ function assignValue(DATE) {
  })
  return LISTITEM;
 }
+/*Total no. of tasks */
 function insertSpanValue(TASKLIST, NUM){
   let spanElem = TASKLIST.parentNode.previousElementSibling.getElementsByTagName('span')[0];
   let spanElemValue = Number(spanElem.innerHTML);
   spanElem.innerHTML = spanElemValue + NUM;
+}
+
+function checkKey(event){
+  event.preventDefault();
+ if (event.keyCode === 13) {
+   event.target.nextElementSibling.click();
+ }
 }
 function addItem(DATE){
   let TASK = event.target.parentNode.querySelector('.task');
@@ -121,7 +129,7 @@ function change(DATE){
     let newValue = document.getElementById('newValue').value
     element.innerHTML = newValue;
     let LISTITEM = assignValue(DATE);
-    currentList.forEach(element => {
+    LISTITEM.forEach(element => {
       if(element.id == ID) {
         element.task = newValue; 
       }
@@ -152,13 +160,13 @@ function insertElemsAndEves(){
                       <i title="RESET" class="fa fa-refresh fa-2x"  onclick="reset('${date}')"></i>
                      </div>
                    </div>
-                  <div class="dateDisplay">${dateConverter(date)} <span class="totalItem"></span></div>  
+                  <div class="dateDisplay">${dateConverter(date)} <span class="totalItem">0</span></div>  
                  </div>
                 <div class="content">
                    <ul class="taskList"></ul>
                    <div class="add-item">
-                      <input type="text" class='task' placeholder="Add a Todo!">
-                      <i class="fa fa-plus-circle fa-lg" time="today" onclick="addItem('${date}')"></i>
+                      <input type="text" class='task' onkeyup="checkKey(event)" placeholder="----- Add a Todo! -----">
+                      <i class="fa fa-plus-circle fa-lg" time="today"  onclick="addItem('${date}')"></i>
                    </div>
                 </div>`;
   document.getElementsByTagName('section')[0].insertAdjacentHTML('beforeend', content);
@@ -172,6 +180,7 @@ function insertElemsAndEves(){
                       navChild[i].getElementsByTagName('i')[0].style.backgroundColor = "";
                    });
                     }
+  
                     getAllTodo();
  }
 //function to display data from mongodb
@@ -288,7 +297,7 @@ function addDate(){
                    <div class="emptyDiv">Add Task</div>
                  </ul>
                  <div class="add-item">
-                    <input type="text" class='task' placeholder="Add a Todo!">
+                    <input type="text" class='task' onkeyup="checkKey(event)" placeholder="Add a Todo!">
                     <i class="fa fa-plus-circle fa-lg " onclick="addItem('${date1}')"></i>
                  </div>`;
   taskEntry.insertAdjacentHTML('beforeend',content);
@@ -329,8 +338,9 @@ function displayUpcoming(INDEX,DATE){
                      <div class="content" style="display:none"> 
                          <ul class="taskList"></ul>
                          <div class="add-item">
+                          <input type="text" class='task' onkeyup="checkKey(event)" placeholder="Add a Todo!">
                            <i class="fa fa-plus-circle fa-lg" time="future" onclick="addItem('${DATE}')"></i>
-                           <input type="text" class='task' placeholder="Add a Todo!">
+    
                          </div>
                      </div>
                 
