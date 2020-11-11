@@ -29,7 +29,7 @@ function dateConverter(arg){
 }
 
 function getAllTodo(){
-
+  document.getElementById('loader').style.display = 'block';
   fetch('http://localhost:9000/list')
   .then(response => response.json())
   .then(response => displayTodayTodo(response));      
@@ -185,6 +185,7 @@ function insertElemsAndEves(){
  }
 //function to display data from mongodb
 function displayTodayTodo(TODAYTODO){
+  document.getElementById('loader').style.display = 'none';
   upcomingList = TODAYTODO;
   let otherDayTodos = 0;
   let TASKLIST = document.getElementsByTagName('section')[0].querySelector('.content').querySelector('.taskList');
@@ -246,8 +247,11 @@ function postRequest(DATE,LISTITEM){
      body: JSON.stringify({'date': DATE, 'todoList': task1})
    })
    .then(response => response.json())
-   .then(response => console.log(response)); 
-  getAllTodo();
+   .then(response => {
+     console.log(response)
+     getAllTodo();
+    }); 
+  
 }
 // function to make UPDATE request
 function updateRequest(DATE,LISTITEM){
@@ -261,8 +265,9 @@ function updateRequest(DATE,LISTITEM){
                                                           })
                                                             .then(response => {
                                                              console.log(response);
+                                                             getAllTodo(); 
                                                           });
-                                      getAllTodo();                  
+                                                      
 }
 
 // Function to Create Upcoming TODOs
@@ -400,8 +405,9 @@ function erase(INDEX,DATE){
     })
     .then(response => {
       console.log(response);
+      getAllTodo();
     });
-    getAllTodo();
+    
     showAllTodo();
 }
 //Function to close Dialogue Box after adding task, cancel, close 
