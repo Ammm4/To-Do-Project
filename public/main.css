@@ -20,11 +20,6 @@ body, h2{
 } 
 /* CSS for Page Header*/
 header {
-  /* position: fixed;
-  top:0px;
-  left:0px;
-  height: auto;
-  width: 100%; */
   margin:0px 0px 9px 0px;
   padding: 2px 0px 0px 0px;  
 }
@@ -46,9 +41,11 @@ button, li, #cover, #totalTask,.content, .header, #recent, #upcoming, #movie, #c
   display: inline-block;
 }
 /*display-none && pos-fixed*/
+nav , section, #cover, #dateEntry, .addTask1, .taskEntry{
+  position: fixed;
+}
 #cover, #dateEntry, .addTask1, .taskEntry {
  display: none;
- position: fixed;
 }
 /*pos-absolute*/
 .add-item, #dateEntry, .taskEntry {
@@ -64,7 +61,6 @@ text-align: center;
 
 /*margin: auto*/
 button, input{
-  height: 45px; 
   border: 2px solid grey;
 } 
 
@@ -73,7 +69,7 @@ button, input{
   font-size: 16px;
 }
 /*height: 45px*/
-.logo img, .header img, input, .clearfix h3, #totalTask, #recent, #upcoming, #movie, #contact, #events, #birthday, #trash, #recipe, #health {
+.logo img, button, .header img, input, .clearfix h3, #totalTask, #recent, #upcoming, #movie, #contact, #events, #birthday, #trash, #recipe, #health {
   height: 45px;
 }
  
@@ -105,9 +101,7 @@ nav, button, #dateEntry, input, section, .taskEntry, li, .fa-pencil, .fa-trash-o
 nav, button, #dateEntry, input, section, .taskEntry {
   border-radius: 6px;
 }
-nav , section{
-  position: fixed;
-}
+
 nav {
   left:0.5vw;
   width: 21.5vw;
@@ -140,6 +134,7 @@ nav {
 }
 input {
   width: 228px;
+  text-align: center;
 }
 .addTask1 { 
   width: 77vw;
@@ -277,4 +272,21 @@ button:hover, input[type=submit]:hover  {
   margin: auto;
   text-align: center;
   font-size: 35px;
+}
+#loader {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left:50%;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  margin: -75px 0 0 -75px;
+  animation: spin 2s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
