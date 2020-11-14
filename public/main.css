@@ -33,7 +33,7 @@ header {
   color: black;
 }
 /* Elements with with 100% width */
-button, li, #cover, #totalTask,.content, .header, #recent, #upcoming, #movie, #contact, #events, #birthday, #trash, #recipe, #health{
+button, li, #cover, #totalTask, .content, .header, #recent, #upcoming, #movie, #contact, #events, #birthday, #trash, #recipe, #health, #grocery{
   width: 100%;
 } 
 /*inline-blocks*/
@@ -41,10 +41,10 @@ button, li, #cover, #totalTask,.content, .header, #recent, #upcoming, #movie, #c
   display: inline-block;
 }
 /*display-none && pos-fixed*/
-nav , section, #cover, #dateEntry, .addTask1, .taskEntry{
+nav , section, #cover, #dateEntry, .addTask1 {
   position: fixed;
 }
-#cover, #dateEntry, .addTask1, .taskEntry {
+#cover, #dateEntry{
  display: none;
 }
 /*pos-absolute*/
@@ -69,7 +69,7 @@ button, input{
   font-size: 16px;
 }
 /*height: 45px*/
-.logo img, button, .header img, input, .clearfix h3, #totalTask, #recent, #upcoming, #movie, #contact, #events, #birthday, #trash, #recipe, #health {
+.logo img, button, .header img, input, .clearfix h3, #totalTask, #grocery, #recent, #upcoming, #movie, #contact, #events, #birthday, #trash, #recipe, #health {
   height: 45px;
 }
  
@@ -120,7 +120,7 @@ nav {
   height: 100%;
 }
 /*NAV Elements*/
-#totalTask, #recent, #upcoming, #movie, #contact, #events, #birthday, #trash, #recipe, #health{
+#totalTask, #grocery, #recent, #upcoming, #movie, #contact, #events, #birthday, #trash, #recipe, #health{
   margin-top: 6px;
   padding: 6px 0px 0px 2px; 
 }
@@ -138,9 +138,8 @@ input {
 }
 .addTask1 { 
   width: 77vw;
-  margin: auto;
   bottom: 5vh;
-  left: 12.5vw;
+  margin:auto;  
   z-index: 111;
 }
 
@@ -152,9 +151,8 @@ section, .taskEntry {
   width: 77vw;
 }
 .taskEntry {
-  z-index: 222;
   top: 10%;
-  left: 12.5%;  
+  margin:auto;  
  }
 
 .content {
