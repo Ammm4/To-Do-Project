@@ -32,8 +32,8 @@
       
         
         <div id="upcoming" onclick="showAllTodo()"><i class="fa fa-list"></i> Upcoming <span class='totalItem'></span></div>
-        <div id="totalTask"><i class="fa fa-shopping-basket"></i> Grocery</div>
-        <div id="movie"><i class="fa fa-film"></i> Movies To See</div>
+        <div id="grocery" onclick="showItems('GROCERY','Shopping item/s')"><i class="fa fa-shopping-basket"></i> Grocery <span class='totalItem'>0</span></div>
+        <div id="movie" onclick="showItems('MOVIES','must see Movies!')"><i class="fa fa-film"></i> Movies To See <span class='totalItem'>0</span></div>
         <div id="contact"><i class="fa fa-address-book"></i> Contacts</div>
         <div id="events"><i class="fa fa-calendar"></i> Events</div>
         <div id="birthday"><i class="fa fa-birthday-cake" aria-hidden="true"></i> Birthdays</div>
@@ -43,14 +43,14 @@
         <div id="trash"><i class="fa fa-trash"></i> Trash</div>
       
       
-      <div class="addTask"><button onclick="showForm()"> + Add a New ToDo</button></div>
+      <div class="addTask"><button onclick="showDateEntryForm()"> + Add a New ToDo</button></div>
   </nav>
 
 <section> </section>
 
 <div id='dateEntry'>
    <div class="clearfix"><i class="fa fa-close fa-2x" style="float: right" onclick="cancel()"></i><h3>Add a Date</h3></div>
-   <form onsubmit="addDate()">
+   <form onsubmit="showTaskEntryForm()">
      <label for="date">Date:</label><br>
      <input type="date" id='date' name='date' required><br><br>
      <input type="submit" value='Select'>
@@ -58,10 +58,8 @@
 
 </div>
    
-<div class="taskEntry"></div>
-<div class="addTask1">
-  <button onclick="showForm(true)">+ ADD NEW </button>
-</div>  
+
+
 <div id='cover'></div> 
 <div id='loader'></div>
 </main>
