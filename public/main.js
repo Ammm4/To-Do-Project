@@ -3,8 +3,6 @@
 window.onload = insertElemsAndEves;
 //DOM Elements
 const dateEntry = document.getElementById('dateEntry');
-const taskEntry = document.getElementsByClassName('taskEntry')[0];
-const addTask1 = document.getElementsByClassName('addTask1')[0];
 const cover = document.getElementById("cover");
 const navChild = document.getElementsByTagName('nav')[0].getElementsByTagName('div');
 
@@ -36,11 +34,16 @@ function getAllTodo(){
     
 }
 function assignValue(DATE) {
-  let LISTITEM = [];
+  let data = {listItem: [], exist: false}
   upcomingList.forEach(element => {
-   if (element.date === DATE) {LISTITEM = JSON.parse(element.todoList)}
+   if (element.date === DATE) {
+    data.listItem = JSON.parse(element.todoList); 
+    data.exist = true;
+  }
+   
  })
- return LISTITEM;
+ return data;
+ 
 }
 /*Total no. of tasks */
 function insertSpanValue(TASKLIST, NUM){
@@ -58,7 +61,8 @@ function checkKey(event){
 function addItem(DATE){
   let TASK = event.target.parentNode.querySelector('.task');
   if(!TASK.value){return;}
-  let LISTITEM = assignValue(DATE);
+  let DATA = assignValue(DATE);
+  let LISTITEM = DATA.listItem;
   let NUM = LISTITEM.length;
   let item = {
     'id': NUM,
@@ -73,8 +77,7 @@ function addItem(DATE){
   if (TASKLIST.firstElementChild.tagName === 'DIV') {TASKLIST.innerHTML = ''};
   insertSpanValue(TASKLIST, 1);
   showList(item.task,item.id, UNTICK, NOLINE, TASKLIST, DATE);
-  (NUM === 0)? postRequest(DATE,LISTITEM): updateRequest(DATE,LISTITEM);
-  
+  DATA.exist?  updateRequest(DATE,LISTITEM):postRequest(DATE,LISTITEM);
 }
       
 // Display items when added or page is loaded
@@ -197,6 +200,10 @@ function displayTodayTodo(TODAYTODO){
      if (element.date === date) {
        TASKLIST.innerHTML = '';
         secondStep(element,TASKLIST, date);
+     } else if(element.date === 'GROCERY') {
+      document.getElementById('grocery').querySelector('.totalItem').innerHTML = JSON.parse(element.todoList).length;
+     } else if(element.date === 'MOVIES'){
+      document.getElementById('movie').querySelector('.totalItem').innerHTML = JSON.parse(element.todoList).length;
      } else {
        otherDayTodos++;
      }
@@ -271,18 +278,14 @@ function updateRequest(DATE,LISTITEM){
 }
 
 // Function to Create Upcoming TODOs
-function showForm(arg) {
+function showDateEntryForm(arg) {
                      cover.innerHTML = '';
                      cover.style.display = 'block';
-                     if(arg){
-                       taskEntry.style.display = 'none';
-                       addTask1.style.display = 'none';
-                     }
                      let text = `<div class="clearfix"> <i class="fa fa-close fa-2x" style="float:right" onclick="cancel('addlist')" ></i><h3 style="text-align:center">SELECT A DATE</h3></div>`;
                      cover.insertAdjacentHTML('afterbegin',text);
                      dateEntry.style.display = 'block';
                     }
-function addDate(){
+function showTaskEntryForm(){
   event.preventDefault();
   let date1 = document.getElementById('date').value;
   let dateSet = date1.split('-')[0] + ',' + (date1.split('-')[1]) + ',' + date1.split('-')[2];
@@ -292,8 +295,8 @@ function addDate(){
   cover.style.display = 'block';
   let text = `<div class="clearfix"> <i class="fa fa-close fa-2x" style="float:right" onclick="cancel('addlist')" ></i><h3 style="text-align:center">ADD TASK/s</h3></div>`;
   cover.insertAdjacentHTML('afterbegin',text);
-  taskEntry.style.display = 'block';
-  let content = `<div class="header header1">
+  let content = `<div class ="taskEntry">
+                 <div class="header header1">
                    <div class="dateDisplay">${dateConverter(dateSet)} <span class="totalItem">0</span></div>
                    <div><i title="RESET" class="fa fa-refresh fa-2x"  onclick="reset('${date1}')"></i></div>
                  </div>
@@ -303,10 +306,14 @@ function addDate(){
                  </ul>
                  <div class="add-item">
                     <input type="text" class='task' onkeyup="checkKey(event)" placeholder="Add a Todo!">
-                    <i class="fa fa-plus-circle fa-lg " onclick="addItem('${date1}')"></i>
-                 </div>`;
-  taskEntry.insertAdjacentHTML('beforeend',content);
-  addTask1.style.display ='block';              
+                    <i class="fa fa-plus-circle fa-lg" onclick="addItem('${date1}')"></i>
+                 </div>
+                 </div>
+                 <div class="addTask1">
+                    <button onclick="showDateEntryForm(true)">+ ADD NEW </button>
+                 </div>  
+                 `;
+  cover.insertAdjacentHTML('beforeend',content);          
                 
                 }
 
@@ -320,7 +327,7 @@ function showAllTodo() {
     cover.insertAdjacentHTML('beforeend','<div class="emptyDiv">No Upcoming ToDos</div>');
   } else {
    upcomingList.forEach((element,INDEX) => {
-     if(element.date != date) {
+     if(element.date != date && element.date != 'GROCERY' && element.date != 'MOVIES') {
        displayUpcoming(INDEX,element.date);
      } 
   })
@@ -387,7 +394,7 @@ const showTask = (function(){
 // Function to reset main screen for today
 function reset(DATE){
   let TASKLIST = (DATE === date)? event.target.parentNode.parentNode.parentNode.nextElementSibling.querySelector('.taskList'):event.target.parentNode.parentNode.nextElementSibling.querySelector('.taskList')
-  TASKLIST.innerHTML = '';
+  TASKLIST.innerHTML = '<div class="emptyDiv">TaskBox is Empty!!</div>';
   TASKLIST.parentNode.previousElementSibling.getElementsByTagName('span')[0].innerHTML = 0;
   let LISTITEM = [];
   updateRequest(DATE,LISTITEM);
@@ -415,12 +422,37 @@ function cancel(para){
   if(!para){
     document.getElementById('date').value = '';
   }
-  else if(para === 'addlist'){
-    taskEntry.style.display = 'none';
-    taskEntry.innerHTML = '';
-    addTask1.style.display = 'none';
-  } 
   cover.innerHTML = '';
   dateEntry.style.display = 'none';
   cover.style.display = 'none';
+}
+
+
+function showItems(TERM,ITEM){
+  cover.innerHTML = '';
+  cover.style.display = 'block';
+  let text = `<div class="clearfix"> <i class="fa fa-close fa-2x" style="float:right" onclick="cancel('addlist')" ></i><h3 style="text-align:center">ADD ${TERM}/s</h3></div>`;
+  cover.insertAdjacentHTML('afterbegin',text);
+  let content = `<div class='taskEntry'>
+                 <div class="header header1">
+                   <div class="dateDisplay"><b>${TERM}</b> <span class="totalItem">0</span></div>
+                   <div><i title="RESET" class="fa fa-refresh fa-2x"  onclick="reset('${TERM}')"></i></div>
+                 </div>
+                 <div class="content">
+                 <ul class="taskList">
+                   <div class="emptyDiv">Add ${ITEM}</div>
+                 </ul>
+                 <div class="add-item">
+                    <input type="text" class='task' onkeyup="checkKey(event)" placeholder="Add ${ITEM}!">
+                    <i class="fa fa-plus-circle fa-lg" onclick="addItem('${TERM}')"></i>
+                 </div>
+                 </div>`;
+  cover.insertAdjacentHTML('beforeend',content);
+  let TASKLIST = cover.querySelector('.taskList');
+  upcomingList.forEach(element => {
+    if(element.date === TERM) {
+      TASKLIST.innerHTML='';
+      secondStep(element,TASKLIST,TERM)
+    }
+  })
 }
