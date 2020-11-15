@@ -101,7 +101,7 @@ function showList(TODO, ID ,STATUS, STATUS1, TASKLIST, DATE){
 
 // Check or uncheck task or delete jobs
 function change(DATE){
-  let LISTITEM = assignValue(DATE);
+  let LISTITEM = assignValue(DATE).listItem;
   if(event.target.getAttribute('job') === 'check') {
     event.target.classList.toggle(UNTICK);
     event.target.classList.toggle(TICK);
@@ -131,7 +131,7 @@ function change(DATE){
     let element = event.target.parentNode;
     let newValue = document.getElementById('newValue').value
     element.innerHTML = newValue;
-    let LISTITEM = assignValue(DATE);
+    let LISTITEM = assignValue(DATE).listItem;
     LISTITEM.forEach(element => {
       if(element.id == ID) {
         element.task = newValue; 
@@ -201,9 +201,9 @@ function displayTodayTodo(TODAYTODO){
        TASKLIST.innerHTML = '';
         secondStep(element,TASKLIST, date);
      } else if(element.date === 'GROCERY') {
-      document.getElementById('grocery').querySelector('.totalItem').innerHTML = JSON.parse(element.todoList).length;
+      document.getElementById('grocery').querySelector('.totalItem').innerHTML = countTotalItem(JSON.parse(element.todoList)) ;
      } else if(element.date === 'MOVIES'){
-      document.getElementById('movie').querySelector('.totalItem').innerHTML = JSON.parse(element.todoList).length;
+      document.getElementById('movie').querySelector('.totalItem').innerHTML = countTotalItem(JSON.parse(element.todoList));
      } else {
        otherDayTodos++;
      }
