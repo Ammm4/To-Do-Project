@@ -45,6 +45,16 @@ function assignValue(DATE) {
  return data;
  
 }
+function countTotalItem(LISTITEM){
+  let num = LISTITEM.length;
+  LISTITEM.forEach(element => {
+    if(element.bin || element.done){
+      num--;
+    }
+  });
+  return num;
+}
+
 /*Total no. of tasks */
 function insertSpanValue(TASKLIST, NUM){
   let spanElem = TASKLIST.parentNode.previousElementSibling.getElementsByTagName('span')[0];
@@ -123,13 +133,13 @@ function change(DATE){
   } else if(event.target.getAttribute('job') === 'amend') {
     let element = event.target.parentNode.parentNode.querySelector('.text');
     let presentVal = element.innerText;
-    element.innerHTML = `<input type="text" id="newValue" onkeyup="checkKey(event)" value='${presentVal}' autofocus> <button onclick="save('${DATE}','${event.target.id}')">Save</button> <button onclick="save()">Cancel</button>`;
+    element.innerHTML = `<input type="text" id="newValue" onkeyup="checkKey(event)" value='${presentVal}' autofocus> <button onclick="saveChanges('${DATE}','${event.target.id}')">Save</button> <button onclick="save()">Cancel</button>`;
   }
 }  
 // Function Edit 
-  function save(DATE,ID){
+  function saveChanges(DATE,ID){
     let element = event.target.parentNode;
-    let newValue = document.getElementById('newValue').value
+    let newValue = document.getElementById('newValue').value;
     element.innerHTML = newValue;
     let LISTITEM = assignValue(DATE).listItem;
     LISTITEM.forEach(element => {
@@ -215,15 +225,6 @@ function displayTodayTodo(TODAYTODO){
   document.getElementById('upcoming').querySelector('.totalItem').innerHTML = otherDayTodos;
 }
 
-function countTotalItem(LISTITEM){
-  let num = LISTITEM.length;
-  LISTITEM.forEach(element => {
-    if(element.bin || element.done){
-      num--;
-    }
-  });
-  return num;
-}
 
 function secondStep(ELEMENT, TASKLIST, DATE){
   let LISTITEM = JSON.parse(ELEMENT.todoList);
@@ -278,7 +279,7 @@ function updateRequest(DATE,LISTITEM){
 }
 
 // Function to Create Upcoming TODOs
-function showDateEntryForm(arg) {
+function showDateEntryForm() {
                      cover.innerHTML = '';
                      cover.style.display = 'block';
                      let text = `<div class="clearfix"> <i class="fa fa-close fa-2x" style="float:right" onclick="cancel('addlist')" ></i><h3 style="text-align:center">SELECT A DATE</h3></div>`;
@@ -295,24 +296,7 @@ function showTaskEntryForm(){
   cover.style.display = 'block';
   let text = `<div class="clearfix"> <i class="fa fa-close fa-2x" style="float:right" onclick="cancel('addlist')" ></i><h3 style="text-align:center">ADD TASK/s</h3></div>`;
   cover.insertAdjacentHTML('afterbegin',text);
-  let content = `<div class ="taskEntry">
-                 <div class="header header1">
-                   <div class="dateDisplay">${dateConverter(dateSet)} <span class="totalItem">0</span></div>
-                   <div><i title="RESET" class="fa fa-refresh fa-2x"  onclick="reset('${date1}')"></i></div>
-                 </div>
-                 <div class="content">
-                 <ul class="taskList">
-                   <div class="emptyDiv">Add Task</div>
-                 </ul>
-                 <div class="add-item">
-                    <input type="text" class='task' onkeyup="checkKey(event)" placeholder="Add a Todo!">
-                    <i class="fa fa-plus-circle fa-lg" onclick="addItem('${date1}')"></i>
-                 </div>
-                 </div>
-                 <div class="addTask1">
-                    <button onclick="showDateEntryForm(true)">+ ADD NEW </button>
-                 </div>  
-                 `;
+  let content = contentHTML(date1,dateConverter(dateSet),'Task/s');
   cover.insertAdjacentHTML('beforeend',content);          
                 
                 }
@@ -428,25 +412,12 @@ function cancel(para){
 }
 
 
-function showItems(TERM,ITEM){
+function showItems(TERM,TERM1,ITEM){
   cover.innerHTML = '';
   cover.style.display = 'block';
   let text = `<div class="clearfix"> <i class="fa fa-close fa-2x" style="float:right" onclick="cancel('addlist')" ></i><h3 style="text-align:center">ADD ${TERM}/s</h3></div>`;
   cover.insertAdjacentHTML('afterbegin',text);
-  let content = `<div class='taskEntry'>
-                 <div class="header header1">
-                   <div class="dateDisplay"><b>${TERM}</b> <span class="totalItem">0</span></div>
-                   <div><i title="RESET" class="fa fa-refresh fa-2x"  onclick="reset('${TERM}')"></i></div>
-                 </div>
-                 <div class="content">
-                 <ul class="taskList">
-                   <div class="emptyDiv">Add ${ITEM}</div>
-                 </ul>
-                 <div class="add-item">
-                    <input type="text" class='task' onkeyup="checkKey(event)" placeholder="Add ${ITEM}!">
-                    <i class="fa fa-plus-circle fa-lg" onclick="addItem('${TERM}')"></i>
-                 </div>
-                 </div>`;
+  let content = contentHTML(TERM,TERM1,ITEM);
   cover.insertAdjacentHTML('beforeend',content);
   let TASKLIST = cover.querySelector('.taskList');
   upcomingList.forEach(element => {
@@ -455,4 +426,21 @@ function showItems(TERM,ITEM){
       secondStep(element,TASKLIST,TERM)
     }
   })
+}
+
+function contentHTML(TERM,TERM1,ITEM){
+  return `<div class='taskEntry'>
+  <div class="header header1">
+    <div class="dateDisplay"><b>${TERM1}</b> <span class="totalItem">0</span></div>
+    <div><i title="RESET" class="fa fa-refresh fa-2x"  onclick="reset('${TERM}')"></i></div>
+  </div>
+  <div class="content">
+  <ul class="taskList">
+    <div class="emptyDiv">Add ${ITEM}</div>
+  </ul>
+  <div class="add-item">
+     <input type="text" class='task' onkeyup="checkKey(event)" placeholder="Add ${ITEM}!">
+     <i class="fa fa-plus-circle fa-lg" onclick="addItem('${TERM}')"></i>
+  </div>
+  </div>`
 }
