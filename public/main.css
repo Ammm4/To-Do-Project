@@ -12,7 +12,8 @@ header, .logo img , .fa-close, .clearfix{
 }
 body, h2{
   margin-top: 0px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+  font-family: 'Goldman', cursive;
 }
 /* overflow-auto */
 #cover, ul, .clearfix{
@@ -115,7 +116,7 @@ nav {
 }
 
 .add-item {
-  bottom: -15px;
+  bottom: 0px;
 }
 
 /* Modal Background */
@@ -164,14 +165,14 @@ section, .taskEntry {
 
 .content {
   position: relative;
-  height: 65vh;
+  height: 67.5vh;
   padding: 0px 5px 5px 5px;
 }
 /*CSS for creating upcoming taskList  */ 
 ul {
   margin: 0;
   padding-left: 0px;
-  height: 59vh; 
+  height: 60vh; 
   font-family: cursive;
 }
 li {
@@ -201,7 +202,7 @@ li {
 
 /* Customising scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 2px;
 }
 
 /* Track */
