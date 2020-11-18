@@ -15,7 +15,7 @@ body, h2{
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 /* overflow-auto */
-#cover, ul, .clearfix, .content {
+#cover, ul, .clearfix{
   overflow: auto;
 } 
 /* CSS for Page Header*/
@@ -33,7 +33,7 @@ header {
   color: black;
 }
 /* Elements with with 100% width */
-button, li, #cover, #totalTask, .content, .header, #recent, #upcoming, #movie, #contact, #events, #birthday, #trash, #recipe, #health, #grocery{
+.addTask, button, li, #cover, #totalTask, .content, .header, #recent, #upcoming, #movie, #contact, #events, #birthday, #trash, #recipe, #health, #grocery{
   width: 100%;
 } 
 /*inline-blocks*/
@@ -98,17 +98,24 @@ nav .header, header .header {
 nav, button, #dateEntry, input, section, .taskEntry, li, .fa-pencil, .fa-trash-o{
   padding: 6px;
 }
+section{
+padding-bottom: 0px;
+}
 nav, button, #dateEntry, input, section, .taskEntry {
   border-radius: 6px;
 }
-
+section, nav {
+  height: 85.5vh;
+  
+}
 nav {
   left:0.5vw;
   width: 21.5vw;
+ 
 }
 
 .add-item {
-  bottom: 5px;
+  bottom: -15px;
 }
 
 /* Modal Background */
@@ -164,7 +171,7 @@ section, .taskEntry {
 ul {
   margin: 0;
   padding-left: 0px;
-  height: 57vh;
+  height: 59vh; 
   font-family: cursive;
 }
 li {
