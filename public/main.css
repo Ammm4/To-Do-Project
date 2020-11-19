@@ -296,3 +296,17 @@ button:hover, input[type=submit]:hover  {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+@media screen and (max-width: 600px){
+nav {
+  display: none
+}
+section, .taskEntry {
+  width: 99vw;
+  left: 0.5vw;
+  right:0.5vw
+}
+.content {
+  height: 64.25vh;
+}
+}
