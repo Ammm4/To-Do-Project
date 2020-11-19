@@ -133,7 +133,7 @@ function change(DATE){
   } else if(event.target.getAttribute('job') === 'amend') {
     let element = event.target.parentNode.parentNode.querySelector('.text');
     let presentVal = element.innerText;
-    element.innerHTML = `<input type="text" id="newValue" onkeyup="checkKey(event)" value='${presentVal}' autofocus> <button onclick="saveChanges('${DATE}','${event.target.id}')">Save</button> <button onclick="save()">Cancel</button>`;
+    element.innerHTML = `<input type="text" id="newValue" onkeyup="checkKey(event)" value='${presentVal}' autofocus> <button onclick="saveChanges('${DATE}','${event.target.id}')">Save</button> <button onclick="saveChanges()">Cancel</button>`;
   }
 }  
 // Function Edit 
