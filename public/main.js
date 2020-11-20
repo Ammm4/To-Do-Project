@@ -180,6 +180,16 @@ function insertElemsAndEves(){
                    <div class="add-item">
                       <input type="text" class='task' onkeyup="checkKey(event)" placeholder="----- Add a Todo! -----">
                       <i class="fa fa-plus-circle fa-lg" time="today"  onclick="addItem('${date}')"></i>
+                      <div id="menu">
+                      
+                                     <div class='dropdown-content'>
+                                     <a onclick="showAllTodo()">Upcoming</a>
+                                     <a onclick="showItems('GROCERY','Groceries','Shopping item/s')">Grocery</a>
+                                     <a onclick="showItems('MOVIES','Movies','must see Movies!')">Movies</a>
+                                     <a onclick="showDateEntryForm()">Add a NewTask</a>
+                                     </div> 
+                                     <button><i class="fa fa-bars fa-2x"></i></button>          
+                      </div>
                    </div>
                 </div>`;
   document.getElementsByTagName('section')[0].insertAdjacentHTML('beforeend', content);
