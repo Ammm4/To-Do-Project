@@ -34,7 +34,7 @@ header {
   color: black;
 }
 /* Elements with with 100% width */
-.addTask, button, li, #cover, #totalTask, .content, .header, #recent, #upcoming, #movie, #contact, #events, #birthday, #trash, #recipe, #health, #grocery{
+.add-item, button, li, #cover, #totalTask, .content, .header, #recent, #upcoming, #movie, #contact, #events, #birthday, #trash, #recipe, #health, #grocery{
   width: 100%;
 } 
 /*inline-blocks*/
@@ -183,6 +183,11 @@ li {
 .fa-pencil, .fa-trash-o, .fa-plus-circle, .fa-plus {
   color: dodgerblue;
 }
+.fa-bars {
+  font-size: 35px;
+    position: relative;
+    top:0px;
+}
 .fa-plus-circle {
     font-size: 45px;
     position: relative;
@@ -296,6 +301,16 @@ button:hover, input[type=submit]:hover  {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+#menu {
+  display: none;
+  position: absolute;
+  right: 8px;
+}
+
+#menu button{
+  border: none;
+  width: auto
+}
 
 @media screen and (max-width: 600px){
 nav {
@@ -309,4 +324,35 @@ section, .taskEntry {
 .content {
   height: 64.25vh;
 }
+#menu {
+  display: inline-block
+}
+
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 170px;
+  bottom: 8px;
+  right: 38px;
+  z-index: 1;
+}
+.dropdown-content a {
+  color: black;
+  background-color:#3498DB;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+#menu:hover .dropdown-content{
+  display: block;
+}
+.dropdown-content a:hover {
+  background-color: #ccc
+}
+#menu:hover button{
+  background-color: white;
+}
+.fa-bars:hover {
+  color: dodgerblue
 }
