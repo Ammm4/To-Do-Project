@@ -186,7 +186,7 @@ function insertElemsAndEves(){
                                      <a onclick="showAllTodo()">Upcoming</a>
                                      <a onclick="showItems('GROCERY','Groceries','Shopping item/s')">Grocery</a>
                                      <a onclick="showItems('MOVIES','Movies','must see Movies!')">Movies</a>
-                                     <a onclick="showDateEntryForm()">Add a NewTask</a>
+                                     <a onclick="showDateEntryForm()">+Add New ToDo</a>
                                      </div> 
                                      <button><i class="fa fa-bars fa-2x"></i></button>          
                       </div>

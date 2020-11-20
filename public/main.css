@@ -316,11 +316,15 @@ button:hover, input[type=submit]:hover  {
 nav {
   display: none
 }
-section, .taskEntry {
+section, .taskEntry, #dateEntry {
   width: 99vw;
   left: 0.5vw;
   right:0.5vw
 }
+#dateEntry {
+  height: 40vh
+}
+
 .content {
   height: 64.25vh;
 }
@@ -329,6 +333,26 @@ section, .taskEntry {
 }
 
 }
+@media screen and (max-width: 950px){
+  nav {
+    display: none
+  }
+  section, .taskEntry, #dateEntry {
+    width: 99vw;
+    left: 0.5vw;
+    right:0.5vw
+  }
+  #dateEntry {
+    height: 40vh
+  }
+  .content {
+    height: 64.25vh;
+  }
+  #menu {
+    display: inline-block
+  }
+  
+  }
 .dropdown-content {
   display: none;
   position: absolute;
